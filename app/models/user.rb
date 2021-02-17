@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
   validates :nickname, presence: true
 
-  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/
   validates :last_name, presence: true, format: {with: NAME_REGEX}
   validates :first_name, presence: true, format: {with: NAME_REGEX}
 
