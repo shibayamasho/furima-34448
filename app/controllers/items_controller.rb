@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
+
   private
 
   def item_params
