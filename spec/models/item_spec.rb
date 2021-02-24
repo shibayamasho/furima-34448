@@ -50,9 +50,9 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送元の地域についての情報が必須であること' do
-        @item.shipment_source_id = nil
+        @item.prefecture_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Shipment source can't be blank"
+        expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
 
       it '発送までの日数についての情報が必須であること' do
@@ -80,9 +80,9 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送元の地域についての情報(shipment_source_id)が1では登録できないこと' do
-        @item.shipment_source_id = 1
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Shipment source must be other than 1'
+        expect(@item.errors.full_messages).to include 'Prefecture must be other than 1'
       end
 
       it '発送までの日数についての情報(days_to_ship_id)が1では登録できないこと' do
