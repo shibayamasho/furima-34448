@@ -19,7 +19,6 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.building_name = nil
         expect(@order_address).to be_valid
       end
-
     end
 
     context '商品が購入できないとき' do
@@ -73,6 +72,12 @@ RSpec.describe OrderAddress, type: :model do
 
       it 'phone_number(電話番号)が全角では購入できない' do
         @order_address.phone_number = "０９０１１１１２２２２"
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include "Phone number is invalid"
+      end
+
+      it 'phone_number(電話番号)が数字のみでないと購入できない' do
+        @order_address.phone_number = "0901111222a"
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include "Phone number is invalid"
       end
