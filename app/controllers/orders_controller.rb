@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    unless user_signed_in?
-      return redirect_to new_user_session_path
-    end
     @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
     if @item.order != nil || @item.user.id == current_user.id
