@@ -79,7 +79,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include 'Delivery fee must be other than 1'
       end
 
-      it '発送元の地域についての情報(shipment_source_id)が1では登録できないこと' do
+      it '発送元の地域についての情報(prefecture_id)が1では登録できないこと' do
         @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include 'Prefecture must be other than 1'
